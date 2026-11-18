@@ -1,0 +1,31 @@
+<article class="recipe-card" [class.selected]="selected()">
+  <div class="recipe-card__header">
+    <div>
+      <p class="recipe-card__category">{{ recipe().category }}</p>
+      <h3>{{ recipe().name }}</h3>
+    </div>
+    <span class="recipe-card__difficulty">{{ recipe().difficulty }}</span>
+  </div>
+
+  <p class="recipe-card__description">{{ recipe().description }}</p>
+
+  <div class="recipe-card__meta" aria-label="Informações da receita">
+    <span>{{ recipe().prepTime }} min</span>
+    <span>{{ recipe().ingredients.length }} ingredientes</span>
+  </div>
+
+  <ul class="recipe-card__ingredients" aria-label="Ingredientes principais">
+    @for (ingredient of recipe().ingredients; track ingredient) {
+      <li>{{ ingredient }}</li>
+    }
+  </ul>
+
+  <button
+    type="button"
+    class="recipe-card__button"
+    [attr.aria-label]="'Ver receita: ' + recipe().name"
+    (click)="selectRecipe()"
+  >
+    Ver receita
+  </button>
+</article>
