@@ -1,0 +1,19 @@
+<section class="recipe-list" aria-labelledby="recipe-list-title">
+  <div class="recipe-list__heading">
+    <div>
+      <p class="eyebrow">Sua coleção</p>
+      <h2 id="recipe-list-title">Receitas para experimentar</h2>
+    </div>
+    <span class="recipe-list__count">{{ recipes().length }} receitas</span>
+  </div>
+
+  <div class="recipe-list__grid">
+    @for (recipe of recipes(); track recipe.id) {
+      <app-recipe-card
+        [recipe]="recipe"
+        [selected]="selectedRecipeId() === recipe.id"
+        (select)="selectRecipe.emit($event)"
+      />
+    }
+  </div>
+</section>
